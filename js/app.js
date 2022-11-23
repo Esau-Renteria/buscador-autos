@@ -77,7 +77,7 @@ transmision.addEventListener('change', e=> {
 color.addEventListener('change', e=> {
     datosBusqueda.color = e.target.value;
 
-    console.log(datosBusqueda);
+    filtrarAuto();
 })
 
 
@@ -112,7 +112,7 @@ function limiparHTML(){
 }
 //Funcion que filtra en base a la busqueda 
 function filtrarAuto(){
-    const resultado = autos.filter(filtrarMarca).filter(filtrarYear).filter(filtrarMinimo).filter(filtrarMaximo).filter(filtrarPuertas).filter(filtrarTransmision);
+    const resultado = autos.filter(filtrarMarca).filter(filtrarYear).filter(filtrarMinimo).filter(filtrarMaximo).filter(filtrarPuertas).filter(filtrarTransmision).filter(filtrarColor);
 
     mostrarAutos(resultado)
 
@@ -163,6 +163,14 @@ function filtrarTransmision(auto){
     const {transmision} = datosBusqueda;
     if(transmision){
         return auto.transmision === transmision;
+    }
+    return auto;
+}
+
+function filtrarColor(auto){
+    const {color} = datosBusqueda;
+    if(color){
+        return auto.color=== color;
     }
     return auto;
 }
