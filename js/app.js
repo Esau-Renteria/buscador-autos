@@ -114,9 +114,25 @@ function limiparHTML(){
 function filtrarAuto(){
     const resultado = autos.filter(filtrarMarca).filter(filtrarYear).filter(filtrarMinimo).filter(filtrarMaximo).filter(filtrarPuertas).filter(filtrarTransmision).filter(filtrarColor);
 
+   
+   if(resultado.length){
     mostrarAutos(resultado)
-
+}else{
+    noResultado();
+}
     // console.log(resultado);
+}
+
+
+
+
+function noResultado(){
+    limiparHTML();
+    const noResultado = document.createElement('div');
+    noResultado.classList.add('alerta', 'error');
+    noResultado.textContent = "Sin resultados, Intenta con otros terminos de busqueda"
+    resultado.appendChild(noResultado)
+    
 }
 
 function filtrarMarca(auto){
